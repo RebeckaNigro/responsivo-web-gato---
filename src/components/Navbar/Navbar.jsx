@@ -1,16 +1,26 @@
+
 import React, { useState } from "react";
 import Logo from "../../assets/logo_preta.png";
 import { IoSearchSharp, IoMenu, IoClose } from "react-icons/io5";
 
 const Menu = [
-    { id: 1, name: "Quem somos", link: "/#quem-somos" },
-    { id: 2, name: "Desafios", link: "/#desafios" },
-    { id: 3, name: "Nossos Produtos", link: "/#produtos" },
-    { id: 4, name: "Nosso Blog", link: "/#blog" }
+    { id: 1, name: "Quem somos", link: "#sobre" },
+    { id: 2, name: "Desafios", link: "#desafios" },
+    { id: 3, name: "Nossos Produtos", link: "#produtos" },
+    { id: 4, name: "Nosso Blog", link: "#blog" },
+    { id: 5, name: "Contato", link: "#contato" }
 ];
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+
+    const handleLinkClick = (link) => {
+        const element = document.querySelector(link);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+        setIsOpen(false);
+    };
 
     return (
         <div className="shadow-md bg-transparent backdrop-blur-md dark:text-dark duration-200 relative z-40">
@@ -21,7 +31,7 @@ const Navbar = () => {
                     {/* Logo */}
                     <a
                         href="#"
-                        className="font-bold text-2 xl sm:text-3xl flex gap-2 items-center"
+                        className="font-bold text-2xl sm:text-3xl flex gap-2 items-center"
                     >
                         <img src={Logo} alt="Logo" className="w-35 h-auto" />
                     </a>
@@ -30,12 +40,12 @@ const Navbar = () => {
                     <ul className="sm:flex hidden items-center gap-4">
                         {Menu.map((data) => (
                             <li key={data.id}>
-                                <a
-                                    href={data.link}
-                                    className="inline-block px-4 hover:text-violet-500 text-black"
+                                <button
+                                    onClick={() => handleLinkClick(data.link)}
+                                    className="inline-block px-4 hover:text-violet-500 text-black cursor-pointer"
                                 >
                                     {data.name}
-                                </a>
+                                </button>
                             </li>
                         ))}
                     </ul>
@@ -74,13 +84,12 @@ const Navbar = () => {
                     <ul className="flex flex-col gap-2 items-start px-4">
                         {Menu.map((data) => (
                             <li key={data.id}>
-                                <a
-                                    href={data.link}
-                                    className="block text-black hover:text-violet-500"
-                                    onClick={() => setIsOpen(false)}
+                                <button
+                                    onClick={() => handleLinkClick(data.link)}
+                                    className="block text-black hover:text-violet-500 cursor-pointer"
                                 >
                                     {data.name}
-                                </a>
+                                </button>
                             </li>
                         ))}
 

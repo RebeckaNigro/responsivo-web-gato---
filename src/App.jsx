@@ -1,19 +1,23 @@
+
 import React from "react";
 import Navbar from "@/components/Navbar/Navbar.jsx";
-import Logo from "@/assets/logo_preta.png";
-import Logotype from "../public/logo.png";
 import CardView from './components/CardView';
-//import CardView from "@/components/CardView.jsx";
-//import CardView from "@/components/CardView.jsx";
+import Servicos from './components/Servicos';
+import Sobre from './components/Sobre';
+import Desafios from './components/Desafios';
+import Depoimentos from './components/Depoimentos';
+import Blog from './components/Blog';
+import Localizacao from './components/Localizacao';
+import Footer from './components/Footer';
 
 const App = () => {
     return (
-        <div className="relative h-screen">
+        <div className="relative min-h-screen">
             <Navbar />
 
-            <section className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-start ">
+            <section className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-start">
                 <video
-                    className="abso lute top-0 left-0"
+                    className="absolute top-0 left-0 w-full h-full object-cover"
                     src="/video/edicaoboapart1.mp4"
                     autoPlay
                     loop
@@ -21,14 +25,18 @@ const App = () => {
                     playsInline
                 />
             </section>
-            <section className="py-210">
+            
+            <section className="relative z-10 pt-[100vh]">
                 <CardView />
+                <Servicos />
+                <Sobre />
+                <Desafios />
+                <Depoimentos />
+                <Blog />
+                <Localizacao />
+                <Footer />
             </section>
-<div>
-
-</div>
         </div>
-
     );
 };
 
