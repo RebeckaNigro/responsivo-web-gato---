@@ -14,10 +14,12 @@ const App = () => {
     return (
         <div className="relative min-h-screen">
             <Navbar />
+           
+
 
             <section className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-start">
                 <video
-                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    className="absolute top-0 left-0 object-cover"
                     src="/video/edicaoboapart1.mp4"
                     autoPlay
                     loop
@@ -25,8 +27,9 @@ const App = () => {
                     playsInline
                 />
             </section>
-            
-            <section className="relative z-10 pt-[100vh]">
+             <img src="/plano_de_fundo.jpg" alt="plano_de_fundo" />
+      
+            <section className=" relative z-10 pt-[130vh]">
                 <CardView />
                 <Servicos />
                 <Sobre />
