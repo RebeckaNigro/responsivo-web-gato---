@@ -1,3 +1,42 @@
+
 @import "tailwindcss";
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
+
+/* Estilos customizados para o carrossel de logos */
+.sponsors-carousel .swiper-slide {
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+/* Melhorias para o vídeo hero */
+.video-overlay {
+    background: linear-gradient(135deg, rgba(84, 56, 131, 0.8) 0%, rgba(199, 161, 253, 0.6) 100%);
+}
+
+/* Animações suaves */
+.fade-in {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade para o texto hero */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1.25rem;
+    }
+}
