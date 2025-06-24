@@ -32,14 +32,10 @@ const LogoCarousel = () => {
                     spaceBetween={30}
                     slidesPerView={2}
                     autoplay={{
-                        delay: 0,
+                        delay: 2000,
                         disableOnInteraction: false,
-                        pauseOnMouseEnter: false,
-                        reverseDirection: false,
                     }}
-                    speed={3000}
                     loop={true}
-                    allowTouchMove={false}
                     breakpoints={{
                         640: {
                             slidesPerView: 3,

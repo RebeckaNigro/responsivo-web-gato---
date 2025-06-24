@@ -10,10 +10,6 @@
     align-items: center;
 }
 
-.sponsors-carousel .swiper-wrapper {
-    transition-timing-function: linear !important;
-}
-
 /* Melhorias para o vídeo hero */
 .video-overlay {
     background: linear-gradient(135deg, rgba(84, 56, 131, 0.8) 0%, rgba(199, 161, 253, 0.6) 100%);
