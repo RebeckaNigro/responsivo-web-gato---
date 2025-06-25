@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
@@ -32,10 +31,14 @@ const LogoCarousel = () => {
                     spaceBetween={30}
                     slidesPerView={2}
                     autoplay={{
-                        delay: 2000,
+                        delay: 0,
                         disableOnInteraction: false,
+                        pauseOnMouseEnter: false,
+                        reverseDirection: false,
                     }}
+                    speed={3000}
                     loop={true}
+                    allowTouchMove={false}
                     breakpoints={{
                         640: {
                             slidesPerView: 3,

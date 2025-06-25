@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -10,18 +10,39 @@ import '../pages/cardview.css';
 import slide_image_1 from "../assets/planostartup1.png";
 import slide_image_2 from "../assets/planostartup2.png";
 import slide_image_3 from "../assets/planostartup3.png";
+import slide_image_4 from "../assets/planostartup4.png";
+import slide_image_5 from "../assets/planostartup5.png";
+
+// Componente para o seu novo card
+const CustomCard = () => {
+    return (
+        <div className="custom-card-content">
+            <h2>Seu Novo Card</h2>
+            <p>Este é o conteúdo do card que aparece ao navegar para a direita.</p>
+            <button>Saiba Mais</button>
+        </div>
+    );
+};
 
 function CardView() {
-    const [activeIndex, setActiveIndex] = useState(0);
+    const initialSlideIndex = 3; // PAGOS
+    const [activeIndex, setActiveIndex] = useState(initialSlideIndex);
     const swiperRef = useRef(null);
 
-    const categories = ["SERVIÇOS", "FREE", "PAGOS"];
+    const categories = ["SERVIÇOS", "FREE", "PAGOS", "OUTROS"];
 
     const goToSlide = (index) => {
         if (swiperRef.current) {
-            swiperRef.current.slideToLoop(index);  // para funcionar com loop
+            swiperRef.current.slideToLoop(index);  // Loop-aware navigation
         }
     };
+
+    // Vai para o slide inicial após o Swiper estar pronto
+    useEffect(() => {
+        if (swiperRef.current) {
+            swiperRef.current.slideToLoop(initialSlideIndex);
+        }
+    }, []);
 
     return (
         <div className="container">
@@ -44,7 +65,7 @@ function CardView() {
                 effect={'coverflow'}
                 grabCursor={true}
                 centeredSlides={true}
-                loop={true}
+                loop={true} // Se você quer que continue a "rodar"
                 slidesPerView={'auto'}
                 coverflowEffect={{
                     rotate: 0,
@@ -72,6 +93,13 @@ function CardView() {
                 <SwiperSlide>
                     <img src={slide_image_3} alt="slide_image" />
                 </SwiperSlide>
+                <SwiperSlide>
+                    <img src={slide_image_4} alt="slide_image" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={slide_image_5} alt="slide_image" />
+                </SwiperSlide>
+
 
                 <div className="slider-controler">
                     <div className="swiper-button-prev slider-arrow">
@@ -86,5 +114,4 @@ function CardView() {
         </div>
     );
 }
-
 export default CardView;
