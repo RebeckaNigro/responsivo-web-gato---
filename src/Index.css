@@ -13,17 +13,19 @@
     transition-timing-function: linear !important;
 }
 
+
 /* Novo carrossel contínuo de logos (sponsors-carousel-continuous) */
 .sponsors-carousel-continuous {
     overflow: hidden;
-    /* Remova qualquer padding horizontal que possa estar aqui, pois o spaceBetween do Swiper e a margem do card cuidarão disso */
+    /* Adicione um padding horizontal aqui se quiser espaço entre o carrossel e as bordas da tela */
+    /* Por exemplo: padding: 0 20px; */
 }
 
 .sponsors-carousel-continuous .swiper-wrapper {
     transition-timing-function: linear !important;
     align-items: center;
     /* Opcional: Esconder a barra de rolagem se ela estiver visível */
-    -ms-overflow-style: none;    /* Para Internet Explorer e Edge */
+ /* Para Internet Explorer e Edge */
     scrollbar-width: none;       /* Para Firefox */
 }
 
@@ -32,16 +34,19 @@
 }
 
 .sponsors-carousel-continuous .swiper-slide {
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0; /* Garante que o slide não encolha */
-    /* NÃO coloque 'width' fixo aqui, pois o slidesPerView='auto' e o CSS do card lidarão com isso */
-    /* As dimensões exatas do card serão definidas na classe 'swiper-custom-slide-card' abaixo */
+    width: 200px !important;
+    height: 100px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    z-index: 1 !important;
+    box-shadow: none !important;
 }
 
-/* ---------------------------------------------------- */
+
 /* ESTILOS ESPECÍFICOS PARA OS CARDS DO SEU CARROSSEL DE LOGOS (COMO NA IMAGEM) */
 /* Aplicados via className="swiper-custom-slide-card" no seu componente React */
 .swiper-custom-slide-card {
@@ -54,17 +59,34 @@
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
     border-radius: 4px; /* Cantos levemente arredondados */
     overflow: hidden; /* Garante que o conteúdo (imagem) não ultrapasse o card */
-    /* IMPORTANTE: Não adicione 'margin' lateral aqui, pois o 'spaceBetween' do Swiper já faz isso. */
-    /* Caso precise de margem vertical, adicione 'margin-top'/'margin-bottom' */
+    flex-basis: 200px; /* Ajuda o flexbox a manter a largura */
+
+    /* --- ADIÇÕES PARA NEUTRALIZAR A EXPANSÃO/ZOOM NO CARD (se ainda ocorrer) --- */
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+    will-change: auto !important;
 }
 
 .swiper-custom-slide-card img {
-    max-height: 80px;
+    max-height: 70px;
+    max-width: 90%;
+    height: auto;
     width: auto;
     object-fit: contain;
-    max-width: 100%; /* Garante que a largura da imagem não exceda a largura do card */
-    height: auto;
+    transform: none !important;
+    animation: none !important;
+    transition: filter 0.3s ease-in-out;
 }
+
+/* Efeito de hover: imagem colorida */
+.swiper-custom-slide-card:hover img {
+    filter: grayscale(0%); /* Remove o efeito preto e branco ao passar o mouse */
+}
+
+
+/* ---------------------------------------------------- */
+
 /* Melhorias para o vídeo hero */
 .video-overlay {
     background: linear-gradient(135deg, rgba(84, 56, 131, 0.8) 0%, rgba(199, 161, 253, 0.6) 100%);
@@ -94,4 +116,115 @@
     .hero-subtitle {
         font-size: 1.25rem;
     }
+}
+
+@media (max-width: 1024px) {
+  .sponsors-carousel-continuous .swiper-slide {
+    width: 150px !important;
+    height: 80px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .sponsors-carousel-continuous .swiper-slide {
+    width: 110px !important;
+    height: 60px !important;
+  }
+  .swiper-custom-slide-card img {
+    max-height: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+    .custom-carousel-card {
+        width: 120px;
+        height: 60px;
+    }
+    .custom-carousel-card img {
+        max-height: 80%;
+    }
+}
+
+.custom-carousel-card {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.08);
+    width: 180px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; /* Remova padding para não aumentar o card */
+    transition: box-shadow 0.2s;
+    overflow: hidden; /* Garante que nada ultrapasse o card */
+}
+
+.custom-carousel-card img {
+    max-width: 90%;
+    max-height: 80%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    filter: grayscale(100%);
+    transition: filter 0.3s;
+}
+
+.carrossel {
+  width: 100%;
+  overflow: hidden;
+  background: transparent;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.carrossel-logos {
+  display: flex;
+  align-items: center;
+  animation: deslizar 40s linear infinite;
+  /* Ajuste a duração para mais rápido/lento */
+}
+
+.carrossel-card {
+  width: 200px;
+  height: 100px;
+  margin: 0 15px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.carrossel-card img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  filter: grayscale(100%);
+  transition: filter 0.3s;
+}
+
+.carrossel-card:hover img {
+  filter: grayscale(0%);
+}
+
+@keyframes deslizar {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .carrossel-card {
+    width: 120px;
+    height: 60px;
+    margin: 0 8px;
+  }
 }
